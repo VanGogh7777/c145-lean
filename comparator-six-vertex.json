@@ -1,0 +1,14 @@
+{
+  "challenge_module": "SixVertexChallenge",
+  "solution_module": "SixVertexSolution",
+  "theorem_names": [
+    "C145SixVertexPilot.explicitSixVertexIdentification"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

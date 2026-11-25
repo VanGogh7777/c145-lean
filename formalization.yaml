@@ -1,0 +1,86 @@
+version: v0.4
+project:
+  name: Exact single-port graph identification from two response derivatives
+  description: >-
+    For connected symmetric nonnegatively weighted graphs with known positive
+    decay and a cyclic signed port, local responses to continuous time inputs
+    exist and have two derivatives at zero. In the separated-port spectral-band
+    and contraction regime of Theorem A, equality of the first and half-mixed
+    second terminal derivatives in all smooth compactly supported directions
+    on one fixed positive horizon determines the source graph Laplacian and
+    signed port up to the same vertex permutation. The admissible competitor
+    can have any finite size. The spectral-band and contraction conditions
+    apply to the source.
+  authors:
+    - Mark Gladden
+  license: Apache-2.0
+  responsible_maintainers:
+    - Mark Gladden
+classification:
+  arxiv: [math.OC, math.CO]
+  msc2020: ['93B30', '05C50']
+sources:
+  - title: Graph identification from first- and second-order response in single-port reaction–diffusion systems
+    authors:
+      - Mark Gladden
+    type: original-proof
+    relationship: other
+    location: 'C145 v0.6, Theorem 1 (§2.1, p. 2, Theorem A in Lean) and Appendix D (pp. 14–15); §10 (pp. 10–11) for the explicit six-vertex result; paper/C145_v0.6.pdf'
+    note: The companion PDF is the C145 v0.6 source manuscript.
+  - title: Data-driven quadratic modeling in the Loewner framework from input-output time-domain measurements
+    id: 'https://doi.org/10.1137/22M153567X'
+    relationship: background
+    note: Background for the quadratic Volterra representation.
+status:
+  scope: >-
+    The Comparator target is Theorem A and existence of the two local C2
+    responses. The exact observations, source separation and contraction are
+    explicit. All 71 accepted proof sources accompany the manuscript.
+    A separate comparison checks identification of one explicit six-vertex
+    source at decay one. The general rooted-six corollary remains analytic.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []
+automation:
+  methods:
+    - method: agent
+      models: []
+      framework: OpenAI Codex and ChatGPT Web Pro
+      tool_setup: Lean and Mathlib for formal development and historical verification.
+      prompting_notes: OpenAI models developed the mathematics and manuscript, wrote the Lean proofs, and reviewed the work.
+  notes: Mark Gladden designed and directed the AbPh research process, including its catalyst concept, pipeline and prompting, and maintains the formalization.
+fidelity:
+  divergences: >-
+    The Lean surface states local existence and quantifies over actual C2
+    response maps. It uses a closed enclosing spectral band, a positive
+    lower bound on the source port gap and the exact squared contraction
+    criterion. It permits unnormalized cyclic real ports and uses finite
+    index sets to state the simultaneous relabeling.
+review:
+  status: agent-reviewed
+  reviewers:
+    - GPT-6.1 Sol requested for the historical joined proof review
+  notes: >-
+    Model-based checks covered the manuscript and historical proof scope.
+    There has been no human mathematical verification or external peer review.
+    The pinned Lean 4.36.0 pilot passed Comparator for Theorem 1 (Theorem A in
+    Lean) and the explicit six-vertex theorem. Lean and NanoDa passed for
+    both targets. The v0.6 Palomar package reuses those exact compiler
+    inputs. A separate, later Lean Pool port passed local build, lint,
+    signature and axiom checks, and both Solution harnesses compiled.
+    The November 25 Web Pro review found no consequential statement-fidelity
+    mismatch. The historical joined-review receipt did not report the
+    effective runtime model. See VALIDATION.md for the scope and chronology.
+alignment:
+  namespace: C145Pilot
+  statements:
+    - source: "C145 v0.6, Theorem 1 (§2.1, p. 2, Theorem A in Lean) and Appendix D (pp. 14–15)"
+      lean: C145Pilot.theoremA
+      module: Solution
+      status: proved
+      note: The solution combines the accepted original-graph inverse and local response existence.
+    - source: "C145 v0.6, §10 (pp. 10–11), separate explicit six-vertex source"
+      lean: C145SixVertexPilot.explicitSixVertexIdentification
+      module: SixVertexSolution
+      status: proved
+      note: A separate Comparator configuration checks one graph with literal weights and signed port. The actual compared responses are continuous at zero.

@@ -1,0 +1,31 @@
+name = "C145Pilot"
+version = "0.1.0"
+defaultTargets = ["C145", "Solution", "SixVertexSolution"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "v4.36.0"
+
+[[lean_lib]]
+name = "C145"
+
+[[lean_lib]]
+name = "Challenge"
+roots = ["Challenge"]
+
+[[lean_lib]]
+name = "Solution"
+roots = ["Solution"]
+
+[[lean_lib]]
+name = "SixVertexChallenge"
+roots = ["SixVertexChallenge"]
+
+[[lean_lib]]
+name = "SixVertexSolution"
+roots = ["SixVertexSolution"]
+
+[[lean_lib]]
+name = "Audit"
+roots = ["Audit"]
