@@ -1,0 +1,18 @@
+name: Palomar mechanical preflight
+on:
+  push:
+    branches: [palomar-preflight]
+    paths: [.github/workflows/palomar-preflight.yml]
+permissions:
+  contents: read
+jobs:
+  palomar-preflight:
+    uses: PalomarRegistry/PalomarSubmission/.github/workflows/submission.yml@14aa8d6b3c2f14a8540605e37144560b9a00e7e7
+    with:
+      repository: VanGogh7777/c145-lean
+      commit: 75d25568c084c8aab4faee30bd94905a6d20c3ad
+      pipeline_commit: 14aa8d6b3c2f14a8540605e37144560b9a00e7e7
+      request_id: c145theorem1
+      mode: full
+      execution_profile: palomar-standard-v1
+      options: '{"comparator_config_path":"comparator.json","authorization_relationship":"I am a responsible author or maintainer"}'
